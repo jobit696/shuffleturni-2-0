@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "nixpacks",
+    "buildCommand": "cd laravel_turni && composer install --no-dev --optimize-autoloader"
+  },
+  "deploy": {
+    "startCommand": "cd laravel_turni && ls -la public/build/assets/ && php artisan config:clear && php artisan view:clear && php artisan serve --host=0.0.0.0 --port=$PORT"
+  }
+}
