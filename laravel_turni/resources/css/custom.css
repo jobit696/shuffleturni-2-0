@@ -733,7 +733,7 @@ body {
         margin-top: 60px !important;
         margin-bottom: 50px !important; /* AGGIUNTO */
         padding: 0.5rem !important;
-        padding-top: 0.75rem !important;
+        padding-top: 1rem !important; /* AUMENTATO: Da 0.75rem a 1rem */
         box-sizing: border-box !important; /* AGGIUNTO */
     }
 
@@ -742,11 +742,13 @@ body {
         overflow: hidden !important; /* MODIFICATO: Da auto a hidden */
         box-sizing: border-box !important; /* AGGIUNTO */
         height: 100% !important; /* AGGIUNTO */
+        margin-top: 0.5rem !important; /* AGGIUNTO: Spazio extra dalla navbar */
     }
 
     .main-title {
         font-size: 1.4rem !important;
         margin-bottom: 0.75rem !important;
+        margin-top: 0 !important; /* MODIFICATO: Rimosso margine superiore */
         flex-shrink: 0 !important; /* AGGIUNTO */
     }
 
@@ -755,7 +757,7 @@ body {
         display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
-        height: calc(100% - 3rem) !important; /* MODIFICATO: Sottrae il titolo */
+        height: calc(100% - 2.5rem) !important; /* MODIFICATO: Ridotto spazio titolo */
         overflow-y: auto !important; /* AGGIUNTO: Scroll solo nel contenuto */
         overflow-x: hidden !important; /* AGGIUNTO */
         flex: 1 !important; /* AGGIUNTO */
@@ -917,20 +919,22 @@ body {
         margin-top: 55px !important;
         margin-bottom: 45px !important; /* AGGIUNTO */
         padding: 0.4rem !important;
-        padding-top: 0.5rem !important;
+        padding-top: 0.75rem !important; /* AUMENTATO: Più spazio dalla navbar */
     }
 
     .main-container {
         padding: 0.6rem !important;
+        margin-top: 0.5rem !important; /* AGGIUNTO: Spazio extra dalla navbar */
     }
 
     .main-title {
         font-size: 1.2rem !important;
         margin-bottom: 0.6rem !important;
+        margin-top: 0 !important; /* MODIFICATO: Rimosso margine superiore */
     }
 
     .form-content {
-        height: calc(100% - 2.5rem) !important; /* MODIFICATO: Titolo più piccolo */
+        height: calc(100% - 2rem) !important; /* MODIFICATO: Titolo più piccolo */
         gap: 0.75rem !important; /* RIDOTTO */
     }
 
@@ -980,6 +984,26 @@ body {
 
 /* 🔧 CORREZIONE AGGIUNTIVA - VIEWPORT HEIGHT SICURO */
 @media (max-height: 600px) {
+    .container {
+        padding-top: 0.5rem !important; /* RIDOTTO per schermi bassi */
+    }
+
+    .main-container {
+        margin-top: 0.25rem !important; /* RIDOTTO per schermi bassi */
+        padding: 0.5rem !important;
+    }
+
+    .main-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+        margin-top: 0 !important;
+    }
+
+    .form-content {
+        height: calc(100% - 1.8rem) !important; /* OTTIMIZZATO per schermi bassi */
+        gap: 0.5rem !important;
+    }
+
     .form-section.users-list {
         max-height: 150px !important;
     }
