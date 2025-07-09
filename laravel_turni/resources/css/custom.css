@@ -603,7 +603,7 @@ input::-webkit-calendar-picker-indicator {
 @media (max-width: 768px) {
     :root {
         --navbar-height: 60px;
-        --footer-height: 0px; /* FOOTER INVISIBILE SU MOBILE */
+        --footer-height: 60px; /* FOOTER INVISIBILE SU MOBILE */
         --container-padding: 0.75rem;
     }
 
@@ -613,15 +613,15 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .footer {
-        display: none !important; /* NASCONDE FOOTER SU MOBILE */
+        display: block !important; /* NASCONDE FOOTER SU MOBILE */
     }
 
     .container {
         /* Margini corretti per mobile SENZA footer */
         margin-top: 60px;
         margin-bottom: 0; /* NESSUN MARGINE INFERIORE */
-        min-height: calc(100vh - 60px);
-        height: calc(100vh - 60px);
+        min-height: calc(80vh - 60px);
+        height: calc(80vh - 60px);
         padding: 0.75rem;
     }
 
