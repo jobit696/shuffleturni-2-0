@@ -1,8 +1,8 @@
 <x-app title="Homepage">
-   <div class="container">
-    <x-navbar/>
-        <div class="main-container ">
-            <h1 class="main-title">
+   <x-navbar/>
+    <div class="container">
+        <div class="main-container" >
+            <h1 class="main-title" >
                 <i class="fas fa-clock"></i>
                 ShuffleTurni 2.0
             </h1>
@@ -109,8 +109,7 @@
                 </div>
             </div>
         </div>
-
-        <x-footer/>
     </div>
+     <x-footer/>
 
 </x-app>
