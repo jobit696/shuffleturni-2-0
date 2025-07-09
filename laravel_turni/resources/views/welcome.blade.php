@@ -1,7 +1,7 @@
 <x-app title="Homepage">
    <x-navbar/>
     <div class="container">
-        <div class="main-container" >
+        <div class="main-container mb-5" >
             <h1 class="main-title" >
                 <i class="fas fa-clock"></i>
                 ShuffleTurni 2.0
