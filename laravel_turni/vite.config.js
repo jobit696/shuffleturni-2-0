@@ -6,14 +6,14 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
-                'resources/js/app.js'
+                'resources/js/app.js'  // Solo questi due - custom.js è importato da app.js
             ],
             refresh: true,
         }),
     ],
     build: {
         outDir: 'public/build',
-        emptyOutDir: false,  // Non svuotare la cartella
+        emptyOutDir: false,
         manifest: true,
         rollupOptions: {
             output: {
