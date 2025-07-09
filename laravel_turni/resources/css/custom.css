@@ -160,7 +160,7 @@ body {
     gap: 0.5rem !important;
     margin-top: 70px !important; /* Esatto spazio della navbar */
     margin-bottom: 60px !important; /* AGGIUNTO: Spazio per footer fisso */
-    padding-top: 1rem !important; /* Padding aggiuntivo per sicurezza */
+    padding-top: 2rem !important; /* AUMENTATO: Era 1rem, ora 2rem per sicurezza */
     overflow: hidden !important; /* AGGIUNTO: Container non scrolla */
     box-sizing: border-box !important; /* AGGIUNTO */
 }
