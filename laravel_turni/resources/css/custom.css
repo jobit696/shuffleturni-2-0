@@ -188,9 +188,9 @@ input::-webkit-calendar-picker-indicator {
     margin-top: var(--navbar-height);
     margin-bottom: var(--footer-height);
 
-    /* Altezza viewport meno spazi fissi */
-    min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
-    height: calc(100vh - var(--navbar-height) - var(--footer-height));
+    /* Altezza viewport meno spazi fissi con padding extra */
+    min-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 2rem);
+    max-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 1rem);
 
     /* Flexbox setup */
     display: flex;
@@ -618,16 +618,19 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .container {
-        /* Margini corretti per mobile */
+        /* Margini corretti per mobile con spazio extra per footer */
         margin-top: 60px;
-        margin-bottom: 50px;
-        min-height: calc(100vh - 60px - 50px);
-        height: calc(100vh - 60px - 50px);
+        margin-bottom: 60px; /* AUMENTATO: 10px extra per sicurezza */
+        min-height: calc(100vh - 60px - 60px - 1.5rem); /* RIDOTTO: Spazio extra */
+        max-height: calc(100vh - 60px - 60px - 1rem);
         padding: 0.75rem;
     }
 
     .main-container {
         padding: 0.75rem !important;
+        /* Assicura che non occupi tutta l'altezza */
+        max-height: calc(100vh - 60px - 60px - 3rem);
+        overflow: hidden;
     }
 
     .main-title {
@@ -637,6 +640,9 @@ input::-webkit-calendar-picker-indicator {
 
     .form-content {
         gap: 0.75rem;
+        /* Altezza controllata per evitare overflow */
+        max-height: calc(100vh - 60px - 60px - 6rem);
+        overflow-y: auto;
     }
 
     .form-section {
@@ -650,10 +656,12 @@ input::-webkit-calendar-picker-indicator {
 
     .form-section.users-list {
         min-height: 180px;
+        max-height: 200px; /* AGGIUNTO: Altezza massima */
     }
 
     .results-section {
         min-height: 200px;
+        max-height: 250px; /* AGGIUNTO: Altezza massima */
         margin-top: 0;
     }
 
@@ -736,16 +744,18 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .container {
-        /* Margini corretti per schermi molto piccoli */
+        /* Margini corretti per schermi molto piccoli con spazio extra */
         margin-top: 55px;
-        margin-bottom: 45px;
-        min-height: calc(100vh - 55px - 45px);
-        height: calc(100vh - 55px - 45px);
+        margin-bottom: 55px; /* AUMENTATO: 10px extra */
+        min-height: calc(100vh - 55px - 55px - 1rem);
+        max-height: calc(100vh - 55px - 55px - 0.5rem);
         padding: 0.5rem;
     }
 
     .main-container {
         padding: 0.6rem !important;
+        max-height: calc(100vh - 55px - 55px - 2.5rem);
+        overflow: hidden;
     }
 
     .main-title {
@@ -755,6 +765,8 @@ input::-webkit-calendar-picker-indicator {
 
     .form-content {
         gap: 0.5rem;
+        max-height: calc(100vh - 55px - 55px - 4rem);
+        overflow-y: auto;
     }
 
     .form-section {
@@ -763,10 +775,12 @@ input::-webkit-calendar-picker-indicator {
 
     .form-section.users-list {
         min-height: 150px;
+        max-height: 170px; /* AGGIUNTO: Altezza massima */
     }
 
     .results-section {
         min-height: 160px;
+        max-height: 180px; /* AGGIUNTO: Altezza massima */
     }
 
     .calc_button, .button_add {
