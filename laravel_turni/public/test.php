@@ -2,12 +2,6 @@
 echo "PHP funziona!<br>";
 echo "Laravel path: " . __DIR__ . "/../<br>";
 echo "Storage writable: " . (is_writable(__DIR__ . "/../storage") ? "YES" : "NO") . "<br>";
-echo "Database exists: " . (file_exists(__DIR__ . "/../database/database.sqlite") ? "YES" : "NO") . "<br>";
-echo "Current directory: " . getcwd() . "<br>";
-echo "Files in current dir: <br>";
-foreach(scandir('.') as $file) {
-    echo "- $file<br>";
-}
 
 try {
     require_once __DIR__ . '/../vendor/autoload.php';
@@ -15,6 +9,14 @@ try {
     
     $app = require_once __DIR__ . '/../bootstrap/app.php';
     echo "Bootstrap OK<br>";
+    
+    // Verifica configurazione database
+    echo "DB_CONNECTION dalla env: " . env('DB_CONNECTION') . "<br>";
+    echo "Config database default: " . config('database.default') . "<br>";
+    
+    // Prova a accedere alla configurazione
+    $config = $app->make('config');
+    echo "Config loaded: YES<br>";
     
 } catch (Exception $e) {
     echo "ERROR: " . $e->getMessage() . "<br>";
