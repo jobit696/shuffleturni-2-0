@@ -182,26 +182,30 @@ input::-webkit-calendar-picker-indicator {
     --container-padding: 1rem;
 }
 
-/* 🔧 LAYOUT PRINCIPALE ADATTATO AL TUO HTML */
+/* 🔧 LAYOUT PRINCIPALE CORRETTO */
 .container {
-    /* Layout fisso tra navbar e footer */
-    position: fixed;
-    top: var(--navbar-height);
-    bottom: var(--footer-height);
-    left: 0;
-    right: 0;
+    /* Layout con margini invece di position fixed */
+    margin-top: var(--navbar-height);
+    margin-bottom: var(--footer-height);
+
+    /* Altezza viewport meno spazi fissi */
+    min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+    height: calc(100vh - var(--navbar-height) - var(--footer-height));
 
     /* Flexbox setup */
     display: flex;
     flex-direction: column;
     padding: var(--container-padding);
     overflow: hidden;
-    min-height: 0;
 
     /* Centra il contenuto */
     max-width: 1200px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
+
+    /* Assicura che non vada sotto navbar/footer */
+    box-sizing: border-box;
 }
 
 .main-container {
@@ -614,9 +618,11 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .container {
-        /* Aggiorna le posizioni per mobile */
-        top: 60px;
-        bottom: 50px;
+        /* Margini corretti per mobile */
+        margin-top: 60px;
+        margin-bottom: 50px;
+        min-height: calc(100vh - 60px - 50px);
+        height: calc(100vh - 60px - 50px);
         padding: 0.75rem;
     }
 
@@ -730,9 +736,11 @@ input::-webkit-calendar-picker-indicator {
     }
 
     .container {
-        /* Aggiorna le posizioni per schermi molto piccoli */
-        top: 55px;
-        bottom: 45px;
+        /* Margini corretti per schermi molto piccoli */
+        margin-top: 55px;
+        margin-bottom: 45px;
+        min-height: calc(100vh - 55px - 45px);
+        height: calc(100vh - 55px - 45px);
         padding: 0.5rem;
     }
 
