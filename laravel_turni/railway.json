@@ -1,9 +1,9 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "composer install --no-dev --optimize-autoloader && touch database/database.sqlite && chmod -R 775 storage bootstrap/cache"
+    "buildCommand": "composer install --no-dev --optimize-autoloader && mkdir -p database && touch database/database.sqlite && chmod -R 775 storage bootstrap/cache database"
   },
   "deploy": {
-    "startCommand": "php artisan config:clear && php artisan storage:link && tail -f storage/logs/laravel.log & exec php artisan serve --host=0.0.0.0 --port=$PORT"
+    "startCommand": "php artisan config:clear && ls -la database/ && exec php artisan serve --host=0.0.0.0 --port=$PORT"
   }
 }
