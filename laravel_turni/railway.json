@@ -1,9 +1,9 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "composer install --no-dev --optimize-autoloader && mkdir -p database && touch database/database.sqlite && chmod -R 775 storage bootstrap/cache database"
+    "buildCommand": "composer install --no-dev --optimize-autoloader"
   },
   "deploy": {
-    "startCommand": "php artisan config:clear && ls -la database/ && exec php artisan serve --host=0.0.0.0 --port=$PORT"
+    "startCommand": "echo '=== CREATING DATABASE ===' && pwd && ls -la && mkdir -p database && touch database/database.sqlite && chmod 666 database/database.sqlite && ls -la database/ && echo '=== DATABASE CREATED ===' && php artisan config:clear && exec php artisan serve --host=0.0.0.0 --port=$PORT"
   }
 }
