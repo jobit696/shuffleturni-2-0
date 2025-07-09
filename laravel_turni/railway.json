@@ -1,9 +1,9 @@
 {
   "build": {
     "builder": "nixpacks",
-    "buildCommand": "composer install --no-dev --optimize-autoloader"
+    "buildCommand": "composer install --no-dev --optimize-autoloader && composer dump-autoload"
   },
   "deploy": {
-    "startCommand": "rm -rf bootstrap/cache/* && rm -rf storage/framework/cache/* && rm -rf storage/framework/sessions/* && rm -rf storage/framework/views/* && php artisan config:clear && php artisan cache:clear && php artisan view:clear && php artisan route:clear && exec php artisan serve --host=0.0.0.0 --port=$PORT"
+    "startCommand": "php -r \"require 'vendor/autoload.php'; echo 'Helpers loaded: ' . (function_exists('env') ? 'YES' : 'NO') . PHP_EOL;\" && rm -rf bootstrap/cache/* && exec php artisan serve --host=0.0.0.0 --port=$PORT"
   }
 }

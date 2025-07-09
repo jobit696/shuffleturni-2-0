@@ -1,27 +1,40 @@
 <?php
-echo "<h1>Laravel Files Check</h1>";
+echo "<h1>Laravel Helper Check</h1>";
 
-$files = [
-    '../config/app.php',
-    '../bootstrap/app.php', 
-    '../bootstrap/providers.php',
-    '../vendor/laravel/framework/src/Illuminate/Foundation/Application.php'
-];
-
-foreach ($files as $file) {
-    if (file_exists(__DIR__ . '/' . $file)) {
-        echo "✅ $file exists<br>";
+try {
+    require_once __DIR__ . '/../vendor/autoload.php';
+    echo "✅ Autoload OK<br>";
+    
+    // Verifica che le funzioni helper Laravel siano caricate
+    if (function_exists('env')) {
+        echo "✅ env() function exists<br>";
     } else {
-        echo "❌ $file MISSING<br>";
+        echo "❌ env() function NOT exists<br>";
     }
-}
-
-// Controlla service providers nel config
-if (file_exists(__DIR__ . '/../config/app.php')) {
-    $config = include __DIR__ . '/../config/app.php';
-    echo "<br>Service Providers in config:<br>";
-    foreach ($config['providers'] ?? [] as $provider) {
-        echo "- $provider<br>";
+    
+    if (function_exists('config')) {
+        echo "✅ config() function exists<br>";
+    } else {
+        echo "❌ config() function NOT exists<br>";
     }
+    
+    if (function_exists('app')) {
+        echo "✅ app() function exists<br>";
+    } else {
+        echo "❌ app() function NOT exists<br>";
+    }
+    
+    // Prova a caricare Bootstrap Laravel
+    $app = require_once __DIR__ . '/../bootstrap/app.php';
+    echo "✅ Laravel app bootstrapped<br>";
+    
+    // Ora verifica di nuovo le funzioni
+    if (function_exists('env')) {
+        echo "✅ env() function now available<br>";
+        echo "APP_ENV: " . env('APP_ENV') . "<br>";
+    }
+    
+} catch (Exception $e) {
+    echo "❌ ERROR: " . $e->getMessage() . "<br>";
 }
 ?>
