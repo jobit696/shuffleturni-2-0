@@ -3,10 +3,14 @@ html {
     color-scheme: light only !important;
     scroll-behavior: smooth !important;
     scroll-padding-top: 70px !important; /* Per anchor links se mai usati */
+    height: 100% !important; /* AGGIUNTO: Per eliminare scroll pagina */
+    overflow: hidden !important; /* AGGIUNTO: Per eliminare scroll pagina */
 }
 
 body {
     color-scheme: light !important;
+    height: 100% !important; /* AGGIUNTO: Per eliminare scroll pagina */
+    overflow: hidden !important; /* AGGIUNTO: Per eliminare scroll pagina */
 }
 
 *, *::before, *::after {
@@ -124,6 +128,9 @@ input::-webkit-calendar-picker-indicator {
     --border-radius: 15px;
     --shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
     --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        --primary-color2: #10b981; /* Verde smeraldo */
+    --secondary-color2: #065f46; /* Verde scuro */
+    --gradient2: linear-gradient(135deg, var(--primary-color2) 0%, var(--secondary-color2) 100%);
 }
 
 /* 🌟 BACKGROUND ANIMATO - FULL SCREEN */
@@ -146,17 +153,19 @@ body {
 
 /* 📱 CONTAINER PRINCIPALE - CON NAVBAR */
 .container {
-    height: calc(100vh - 70px) !important;
+    height: calc(100vh - 70px - 60px) !important; /* MODIFICATO: Sottrae navbar + footer */
     display: flex !important;
     flex-direction: column !important;
     padding: 1rem !important;
     gap: 0.5rem !important;
     margin-top: 70px !important; /* Esatto spazio della navbar */
+    margin-bottom: 60px !important; /* AGGIUNTO: Spazio per footer fisso */
     padding-top: 1rem !important; /* Padding aggiuntivo per sicurezza */
+    overflow: hidden !important; /* AGGIUNTO: Container non scrolla */
 }
 
 .main-container {
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.712) !important; /* RIPRISTINATO: Trasparenza originale */
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
     border-radius: var(--border-radius) !important;
@@ -169,53 +178,62 @@ body {
     flex: 1 !important;
     display: flex !important;
     flex-direction: column !important;
-    overflow: auto !important; /* Cambiato da hidden ad auto */
+    overflow: hidden !important; /* MODIFICATO: Da auto a hidden per evitare scroll */
     margin: 0 auto !important;
     min-height: 0 !important;
 }
 
-/* 🦶 FOOTER STYLING - SEMPRE VISIBILE */
+/* 🦶 FOOTER FISSO IN BASSO */
 .footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1020 !important;
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(15px) !important;
-    border-radius: 12px !important;
-    padding: 0.75rem 1rem !important;
-    border: 1px solid rgba(102, 126, 234, 0.3) !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-top: 1px solid rgba(102, 126, 234, 0.3) !important;
+    border-radius: 10px 10px 0px 0px !important;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1) !important;
     text-align: center !important;
     animation: slideInUp 0.8s ease-out 0.2s both !important;
-    flex-shrink: 0 !important;
+    padding: 0.5rem 1rem !important;
+    height: 60px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
     width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    margin-top: 0.5rem !important; /* Spazio dal main-container */
+    margin: 0 !important;
 }
 
 .footer-brand {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-    font-size: 1.1rem;
-    margin-bottom: 0.15rem;
-    letter-spacing: 0.5px;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.1rem !important;
+    letter-spacing: 0.3px !important;
+    line-height: 1.2 !important;
 }
 
 .footer-credit {
-    color: var(--dark-color);
-    font-size: 0.8rem;
-    opacity: 0.8;
-    font-weight: 500;
-    margin: 0;
+    color: var(--dark-color) !important;
+    font-size: 0.75rem !important;
+    opacity: 0.8 !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
 }
 
 .footer-credit strong {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 600 !important;
 }
 
 @keyframes slideInUp {
@@ -278,7 +296,7 @@ body {
 }
 
 .form-section {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8); /* RIPRISTINATO: Trasparenza originale */
     border-radius: var(--border-radius);
     padding: 1rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -363,8 +381,28 @@ body {
 }
 
 /* 🔘 BUTTONS STYLING - CORRETTO E UNIFICATO */
-.calc_button, .button_add {
+.button_add {
     background: var(--gradient) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 1rem 2rem !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+.calc_button {
+    background: var(--gradient2) !important;
     border: none !important;
     border-radius: 12px !important;
     padding: 1rem 2rem !important;
@@ -445,7 +483,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8); /* RIPRISTINATO: Trasparenza originale */
     border-radius: var(--border-radius);
     padding: 1rem;
     border: 1px solid rgba(102, 126, 234, 0.2);
@@ -653,8 +691,9 @@ body {
     }
 
     .container {
-        height: calc(100vh - 70px);
+        height: calc(100vh - 70px - 60px); /* MODIFICATO: Include footer */
         margin-top: 70px;
+        margin-bottom: 60px; /* AGGIUNTO */
         padding: 0.75rem;
     }
 
@@ -675,24 +714,29 @@ body {
     }
 }
 
-/* 📱 MOBILE FIXES - MIGLIORATI */
+/* 📱 MOBILE FIXES - SOLO MODIFICHE ESSENZIALI */
 @media (max-width: 768px) {
-
- .navbar {
+    .navbar {
         height: 60px !important;
         padding: 0.5rem 0 !important;
     }
 
-     .container {
-        height: calc(100vh - 60px) !important;
+    .footer {
+        height: 50px !important;
+        padding: 0.4rem !important;
+    }
+
+    .container {
+        height: calc(100vh - 60px - 50px) !important; /* MODIFICATO: Include footer mobile */
         margin-top: 60px !important;
+        margin-bottom: 50px !important; /* AGGIUNTO */
+        padding: 0.5rem !important;
         padding-top: 0.75rem !important;
     }
 
     .main-container {
         padding: 0.75rem;
-        overflow-y: auto;
-        max-height: calc(100vh - 140px);
+        overflow: hidden; /* MODIFICATO: Da auto a hidden */
     }
 
     .main-title {
@@ -700,13 +744,14 @@ body {
         margin-bottom: 0.75rem;
     }
 
-    /* 🔄 LAYOUT MOBILE - STACK VERTICALE */
+    /* 🔄 FORM CONTENT MOBILE - SCROLL SOLO QUI */
     .form-content {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        height: auto;
-        overflow: visible;
+        height: 100%; /* AGGIUNTO */
+        overflow-y: auto; /* AGGIUNTO: Scroll solo nel contenuto */
+        overflow-x: hidden; /* AGGIUNTO */
     }
 
     .form-left, .form-center, .form-right {
@@ -790,19 +835,6 @@ body {
         -webkit-tap-highlight-color: transparent !important;
     }
 
-    .footer {
-        padding: 0.6rem;
-        margin-top: 0.5rem;
-    }
-
-    .footer-brand {
-        font-size: 1.1rem;
-    }
-
-    .footer-credit {
-        font-size: 0.8rem;
-    }
-
     .navbar-brand {
         font-size: 1.3rem !important;
     }
@@ -825,54 +857,54 @@ body {
 
     /* 📱 SCROLLBAR MOBILE */
     .users-container-content::-webkit-scrollbar,
-    .results-content::-webkit-scrollbar {
+    .results-content::-webkit-scrollbar,
+    .form-content::-webkit-scrollbar { /* AGGIUNTO */
         width: 6px;
     }
 
     .users-container-content::-webkit-scrollbar-track,
-    .results-content::-webkit-scrollbar-track {
+    .results-content::-webkit-scrollbar-track,
+    .form-content::-webkit-scrollbar-track { /* AGGIUNTO */
         background: rgba(255, 255, 255, 0.2);
         border-radius: 3px;
     }
 
     .users-container-content::-webkit-scrollbar-thumb,
-    .results-content::-webkit-scrollbar-thumb {
+    .results-content::-webkit-scrollbar-thumb,
+    .form-content::-webkit-scrollbar-thumb { /* AGGIUNTO */
         background: var(--primary-color);
         border-radius: 3px;
         min-height: 30px;
-    }
-
-      .navbar-brand {
-        font-size: 1.3rem !important;
-    }
-
-    .main-title {
-        font-size: 1.4rem !important;
-        margin-top: 0.25rem !important;
-        margin-bottom: 0.75rem !important;
-    }
-
-    html {
-        scroll-padding-top: 60px !important;
     }
 }
 
 /* 📱 MOBILE VERY SMALL */
 @media (max-width: 480px) {
-      .navbar {
+    .navbar {
         height: 55px !important;
         padding: 0.4rem 0 !important;
     }
 
+    .footer {
+        height: 45px !important;
+        padding: 0.3rem !important;
+    }
+
     .container {
-        height: calc(100vh - 55px) !important;
+        height: calc(100vh - 55px - 45px) !important; /* MODIFICATO: Include footer small */
         margin-top: 55px !important;
+        margin-bottom: 45px !important; /* AGGIUNTO */
+        padding: 0.4rem !important;
         padding-top: 0.5rem !important;
     }
 
     .main-container {
         padding: 0.6rem;
-        max-height: calc(100vh - 120px);
+    }
+
+    .main-title {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.6rem !important;
     }
 
     .form-section {
@@ -907,16 +939,6 @@ body {
 
     .navbar-brand {
         font-size: 1.2rem !important;
-    }
-
-    .main-title {
-        font-size: 1.2rem !important;
-        margin-top: 0.25rem !important;
-        margin-bottom: 0.6rem !important;
-    }
-
-    html {
-        scroll-padding-top: 55px !important;
     }
 }
 
@@ -959,10 +981,6 @@ body {
 }
 
 /* ✨ HOVER EFFECTS */
-.hover-glow {
-    transition: all 0.3s ease;
-}
-
 .hover-glow:hover {
     box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
 }

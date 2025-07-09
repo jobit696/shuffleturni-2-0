@@ -94,7 +94,7 @@
                         </button>
                     </div>
 
-                    <div id="results_row" class="results-section">
+                    <div id="results_row" class="results-section mt-3">
                         <h4 class="section-header">
                             <i class="fas fa-chart-bar"></i>
                             Risultati Turni
