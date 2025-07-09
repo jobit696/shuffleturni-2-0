@@ -187,7 +187,7 @@ input::-webkit-calendar-picker-indicator {
     /* Layout con margini invece di position fixed */
     margin-top: var(--navbar-height);
     margin-bottom: var(--footer-height);
-background-color: #c0392b;
+
     /* Altezza viewport meno spazi fissi */
     min-height: calc(100% - var(--navbar-height) - var(--footer-height));
     height: calc(100% - var(--navbar-height) - var(--footer-height));
@@ -730,15 +730,15 @@ background-color: #c0392b;
     }
 
     .footer {
-        display: none !important; /* NASCONDE FOOTER SU SCHERMI PICCOLI */
+        display: block !important; /* NASCONDE FOOTER SU SCHERMI PICCOLI */
     }
 
     .container {
         /* Margini corretti per schermi molto piccoli SENZA footer */
         margin-top: 55px;
         margin-bottom: 55px; /* NESSUN MARGINE INFERIORE */
-        min-height: calc(100% );
-        height: calc(100% );
+        min-height: calc(80% );
+        height: calc(80% );
         padding: 0.5rem;
     }
 
