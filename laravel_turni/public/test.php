@@ -1,6 +1,5 @@
 <?php
 echo "PHP funziona!<br>";
-echo "Laravel path: " . __DIR__ . "/../<br>";
 echo "Storage writable: " . (is_writable(__DIR__ . "/../storage") ? "YES" : "NO") . "<br>";
 
 try {
@@ -10,16 +9,18 @@ try {
     $app = require_once __DIR__ . '/../bootstrap/app.php';
     echo "Bootstrap OK<br>";
     
-    // Verifica configurazione database
+    // Test semplice senza config()
     echo "DB_CONNECTION dalla env: " . env('DB_CONNECTION') . "<br>";
-    echo "Config database default: " . config('database.default') . "<br>";
     
-    // Prova a accedere alla configurazione
-    $config = $app->make('config');
-    echo "Config loaded: YES<br>";
+    // Prova a fare il boot completo dell'app
+    $app->boot();
+    echo "App Boot OK<br>";
+    
+    // Ora prova config
+    echo "Config default db: " . config('database.default') . "<br>";
     
 } catch (Exception $e) {
     echo "ERROR: " . $e->getMessage() . "<br>";
-    echo "Stack trace: <pre>" . $e->getTraceAsString() . "</pre>";
+    echo "File: " . $e->getFile() . " Line: " . $e->getLine() . "<br>";
 }
 ?>
